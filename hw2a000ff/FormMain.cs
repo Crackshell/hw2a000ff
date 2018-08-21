@@ -123,7 +123,7 @@ namespace hw2a000ff
 		{
 			var ofd = new OpenFileDialog();
 			ofd.Title = "Locate levels.xml";
-			ofd.Filter = "Levels file (levels.xml)|levels.xml";
+			ofd.Filter = "Levels file|levels.xml";
 			if (ofd.ShowDialog() != DialogResult.OK) {
 				return;
 			}
@@ -139,6 +139,11 @@ namespace hw2a000ff
 
 			if (textOutputPath.Text == "") {
 				MessageBox.Show("You did not provide an output path.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return;
+			}
+
+			if (textLevelsXmlPath.Text != "" && !textLevelsXmlPath.Text.EndsWith("levels.xml")) {
+				MessageBox.Show("You picked an invalid path for the levels.xml file.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				return;
 			}
 
